@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH --job-name=sysbench_cpu
+#SBATCH --time=00:20
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+
+sysbench cpu --time=600 --threads=8 run
+sleep 600

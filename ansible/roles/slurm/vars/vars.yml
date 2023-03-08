@@ -1,0 +1,45 @@
+---
+# vars/vars.yml
+# for remove sensitive infomation
+
+masternode:
+  name: x28-ubuntu
+  addr: x.1.28
+nodes:
+  - name: x35-ubuntu
+    addr: x.1.35
+    cpus: 4
+  - name: x28-ubuntu
+    addr: x.1.28
+    cpus: 4
+  - name: x42-ubuntu
+    addr: x.1.42
+    cpus: 4
+  - name: x27-ubuntu
+    addr: x.1.27
+    cpus: 8
+  # - name: x53-ubuntu
+  #   addr: x.1.53
+  #   cpus: 4
+  # - name: x58-ubuntu
+  #   addr: x.1.58
+  #   cpus: 4
+  # - name: x97-ubuntu
+  #   addr: x.1.97
+  #   cpus: 4
+partitions:
+  - name: test
+    nodes: x35-ubuntu,x42-ubuntu
+    default: yes
+    max_time: infinite
+    state: up
+  - name: normal
+    nodes: x27-ubuntu
+    default: yes
+    max_time: infinite
+    state: up
+  # - name: test
+  #   nodes: x53-ubuntu,x97-ubuntu
+  #   default: yes
+  #   max_time: infinite
+  #   state: up

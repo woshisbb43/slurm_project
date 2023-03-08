@@ -1,0 +1,38 @@
+---
+
+- include_vars: vars/vars.yml
+  tags:
+    - slurmconfig
+
+- name: Create Slurm Directory if Not Exist
+  become: true
+  file:
+    path: /data/slurm
+    state: directory
+    mode: '0755'
+    
+- name: Copy script to remote host
+  copy:
+    src: files/SLURM_Ubuntu_installation.sh
+    dest: /data/slurm/script.sh
+    mode: '0755'
+
+- name: Set execute permission on script file
+  file:
+    path: /data/slurm/script.sh
+    mode: 'u+x'
+
+- name: Execute script on remote host
+  shell: bash /data/slurm/script.sh
+
+- name: Render Slurm Config File
+  template:
+    src: templates/slurm.conf.j2
+    dest: /etc/slurm/slurm.conf
+  tags:
+    - slurmconfig
+
+- name: restart slurmd
+  shell: sudo systemctl restart slurmd
+  tags:
+    - slurmconfig
