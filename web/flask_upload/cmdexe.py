@@ -6,12 +6,12 @@ CMD_ML = 'sbatch -p test  -o /home/ubuntu/slurm.out /data/slurm/jobs/pytest.sh'
 
 def execute(loadtype):
     if loadtype == 'cpu':
-        ret = subprocess.call(CMD_CPU, shell=True)
+        # ret = subprocess.call(CMD_CPU, shell=True)
+        ret = subprocess.check_output(["sbatch","-o","/home/ubuntu/slurm.out","/data/slurm/jobs/sysbench_cpu.script"])
     elif loadtype == 'mem':
-        ret = subprocess.call(CMD_MEM, shell=True)
+        ret = subprocess.check_output(["sbatch","-o","/home/ubuntu/slurm.out","/data/slurm/jobs/sysbench_mem.script"])
+        # ret = subprocess.call(CMD_MEM, shell=True)
     else:
-        ret = subprocess.call(CMD_ML, shell=True)
-    if ret == 0:
-        return 'success'
-    else:
-        return 'failed'
+        ret = subprocess.check_output(["sbatch","-p","test","-o","/home/ubuntu/slurm.out","/data/slurm/jobs/pytest.sh"])
+        # ret = subprocess.call(CMD_ML, shell=True)
+    return ret

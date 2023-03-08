@@ -26,9 +26,9 @@ def display_file():
         file = open(app.config['UPLOAD_FOLDER'] + filename)
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         #########
-        train.predict_img(model, class_names, full_filename)
+        train_result = train.predict_img(model, class_names, full_filename)
         #########
-    return render_template('content.html', user_image = full_filename) 
+    return render_template('content.html', user_image = full_filename, train_result=train_result) 
 
 @app.route('/load/<path:loadtype>')
 def load(loadtype):

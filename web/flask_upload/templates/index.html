@@ -74,7 +74,7 @@
           </thead>
           <tbody>
             {% for labels, value in metric_data.items() %}
-            <tr>
+            <tr{% if 'job' in labels %} style="background-color: gray;"{% endif %}>
               <td>{{ labels }}</td>
               <td>{{ value['samples'][0]['labels'] }}</td>
               <td>{{ value['samples'][0]['value'] }}</td>

@@ -5,9 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
+    <style>
+        body {
+            text-align: center;
+        }
+        .navbar {
+            background-color: black;
+        }
+        .navbar-brand {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <pre>{{content}}</pre>
-    <img src="{{ user_image }}" alt="User Image">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Prediction result</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <!-- Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <pre>{{content}}</pre>
+                <h2>{{train_result}}</h2>
+                <img src="{{user_image}}" alt="User Image" class="img-fluid rounded mx-auto d-block mt-3">
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
