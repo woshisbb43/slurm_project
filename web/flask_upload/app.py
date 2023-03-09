@@ -14,13 +14,16 @@ model, class_names = train.train_model()
 
 @app.route('/')
 def upload_file():
+    squeue_info = cmdexe.getsqueue()
     metric_data = monitor.get_metrics()
-    return render_template('index.html', metric_data=metric_data)
+    return render_template('index.html', metric_data=metric_data, squeue_info=squeue_info)
 
 @app.route('/display', methods = ['GET', 'POST'])
 def display_file():
     if request.method == 'POST':
         f = request.files['file']
+        if not f:
+            return 'Please select image to upload'
         filename = secure_filename(f.filename)
         f.save(app.config['UPLOAD_FOLDER'] + filename)
         file = open(app.config['UPLOAD_FOLDER'] + filename)
@@ -32,7 +35,9 @@ def display_file():
 
 @app.route('/load/<path:loadtype>')
 def load(loadtype):
-    return cmdexe.execute(loadtype)
+    squeue_info = cmdexe.execute(loadtype)
+    metric_data = monitor.get_metrics()
+    return render_template('jobinfo.html',squeue_info=squeue_info, metric_data=metric_data)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug = True)

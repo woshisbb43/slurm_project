@@ -14,4 +14,12 @@ def execute(loadtype):
     else:
         ret = subprocess.check_output(["sbatch","-p","test","-o","/home/ubuntu/slurm.out","/data/slurm/jobs/pytest.sh"])
         # ret = subprocess.call(CMD_ML, shell=True)
-    return ret
+    output = subprocess.check_output(['squeue']).decode('utf-8').strip().split('\n')[1:]
+    jobs = [line.split() for line in output]
+    return jobs
+
+def getsqueue():
+    output = subprocess.check_output(['squeue']).decode('utf-8').strip().split('\n')[1:]
+    jobs = [line.split() for line in output]
+    # print(jobs)
+    return jobs

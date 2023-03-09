@@ -103,7 +103,7 @@ def train_model():
     model.summary()
 
     # train the model
-    epochs=1
+    epochs=8
     history = model.fit(
     train_ds,
     validation_data=val_ds,
