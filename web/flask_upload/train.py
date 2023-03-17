@@ -13,7 +13,7 @@ import pathlib
 def train_model():
     # dataset_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz"
     # data_dir = tf.keras.utils.get_file('giao', origin=dataset_url, untar=True)
-    data_dir = "/data/web/dataset/flower_photos"
+    data_dir = "/data/web/flower_photos"
     data_dir = pathlib.Path(data_dir)
     print(data_dir)
     # image_count = len(list(data_dir.glob('*/*.jpg')))
@@ -103,7 +103,7 @@ def train_model():
     model.summary()
 
     # train the model
-    epochs=8
+    epochs=1
     history = model.fit(
     train_ds,
     validation_data=val_ds,

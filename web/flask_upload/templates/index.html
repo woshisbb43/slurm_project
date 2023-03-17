@@ -86,7 +86,7 @@
       
 
     <div class="container">
-        <h2>Slurm monitor</h2>
+        <h2>Slurm status</h2>
         <table class="table">
           <thead class="thead-dark">
             <tr>
@@ -98,7 +98,7 @@
           <tbody>
             {% for labels, value in metric_data.items() %}
             <tr{% if 'job' in labels %} style="background-color: gray;"{% endif %}>
-              <td>{{ labels }}</td>
+              <td>{{ value['samples'][0]['name'] }}</td>
               <td>{{ value['samples'][0]['labels'] }}</td>
               <td>{{ value['samples'][0]['value'] }}</td>
             </tr>
