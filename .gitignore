@@ -1,3 +1,5 @@
 **/dataset
 **/__pycache__
 **/exporter-slum
+nohup.out
+static/
