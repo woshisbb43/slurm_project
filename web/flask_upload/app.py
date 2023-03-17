@@ -1,5 +1,5 @@
 # 参考 https://medium.com/featurepreneur/uploading-files-using-flask-ec9fb4c7d438
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from werkzeug.utils import secure_filename
 import os 
 import train
@@ -37,7 +37,7 @@ def display_file():
 def load(loadtype):
     squeue_info = cmdexe.execute(loadtype)
     metric_data = monitor.get_metrics()
-    return render_template('jobinfo.html',squeue_info=squeue_info, metric_data=metric_data)
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug = True)
