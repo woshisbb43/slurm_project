@@ -1,5 +1,5 @@
 # What's the output of this project?
-Please visit https://tenantx.citybase.qq.com/
+Please visit 
 # What's this repo for?
 This repo is for presenting how to use ansible provision a slurm compute nodes cluster.
 # Structure of this repo?
